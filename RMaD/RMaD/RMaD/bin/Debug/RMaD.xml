@@ -83,12 +83,6 @@
             </summary>
             <param name="panel">Index of panel being changed to</param>
         </member>
-        <member name="M:RMaD.UxForm.newShipment(System.Int32)">
-            <summary>
-            Creates a new shipment button within the Flow Layout Panel.
-            </summary>
-            <param name="shipNum">The index of the new button</param>
-        </member>
         <member name="M:RMaD.UxForm.populateDataGridView">
             <summary>
             Populate grid with shipments queried from database

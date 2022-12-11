@@ -31,7 +31,7 @@ namespace RMaD
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UxForm));
             this.pnlShipments = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -44,6 +44,13 @@ namespace RMaD
             this.lblGroups = new System.Windows.Forms.Label();
             this.imageIcons = new System.Windows.Forms.ImageList(this.components);
             this.pnlReports = new System.Windows.Forms.Panel();
+            this.lblEplanation = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.lblStart = new System.Windows.Forms.Label();
+            this.dgReport = new System.Windows.Forms.DataGridView();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblReports = new System.Windows.Forms.Label();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.btnCancelEdit = new System.Windows.Forms.Button();
@@ -66,22 +73,15 @@ namespace RMaD
             this.btnReportsMenu = new System.Windows.Forms.Button();
             this.btnGroupMenu = new System.Windows.Forms.Button();
             this.btnShipmentMenu = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.lblStart = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.lblEplanation = new System.Windows.Forms.Label();
             this.pnlShipments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShipment)).BeginInit();
             this.pnlGroups.SuspendLayout();
             this.pnlReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgReport)).BeginInit();
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).BeginInit();
             this.pnlSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlShipments
@@ -90,10 +90,10 @@ namespace RMaD
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlShipments.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlShipments.Controls.Add(this.dataGridViewShipment);
             this.pnlShipments.Controls.Add(this.btnEdit);
             this.pnlShipments.Controls.Add(this.btnRemove);
             this.pnlShipments.Controls.Add(this.btnRefresh);
-            this.pnlShipments.Controls.Add(this.dataGridViewShipment);
             this.pnlShipments.Controls.Add(this.btnAddShipment);
             this.pnlShipments.Controls.Add(this.lblShipments);
             this.pnlShipments.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,6 +113,7 @@ namespace RMaD
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit Shipment";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
             // 
             // btnRemove
             // 
@@ -124,6 +125,7 @@ namespace RMaD
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove Shipment";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnRefresh
             // 
@@ -148,9 +150,9 @@ namespace RMaD
             this.dataGridViewShipment.Name = "dataGridViewShipment";
             this.dataGridViewShipment.ReadOnly = true;
             this.dataGridViewShipment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewShipment.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewShipment.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewShipment.Size = new System.Drawing.Size(574, 563);
             this.dataGridViewShipment.TabIndex = 2;
             // 
@@ -215,15 +217,78 @@ namespace RMaD
             this.pnlReports.Controls.Add(this.btnSearch);
             this.pnlReports.Controls.Add(this.lblEndDate);
             this.pnlReports.Controls.Add(this.lblStart);
-            this.pnlReports.Controls.Add(this.dataGridView1);
-            this.pnlReports.Controls.Add(this.dateTimePicker2);
-            this.pnlReports.Controls.Add(this.dateTimePicker1);
+            this.pnlReports.Controls.Add(this.dgReport);
+            this.pnlReports.Controls.Add(this.dtEndDate);
+            this.pnlReports.Controls.Add(this.dtStartDate);
             this.pnlReports.Controls.Add(this.lblReports);
             this.pnlReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlReports.Location = new System.Drawing.Point(77, 2);
             this.pnlReports.Name = "pnlReports";
             this.pnlReports.Size = new System.Drawing.Size(580, 707);
             this.pnlReports.TabIndex = 2;
+            // 
+            // lblEplanation
+            // 
+            this.lblEplanation.AutoSize = true;
+            this.lblEplanation.Location = new System.Drawing.Point(150, 100);
+            this.lblEplanation.Name = "lblEplanation";
+            this.lblEplanation.Size = new System.Drawing.Size(269, 24);
+            this.lblEplanation.TabIndex = 9;
+            this.lblEplanation.Text = "Get Shipments Between Dates:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(211, 269);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(153, 35);
+            this.btnSearch.TabIndex = 8;
+            this.btnSearch.Text = "Generate Data";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(107, 198);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(93, 24);
+            this.lblEndDate.TabIndex = 7;
+            this.lblEndDate.Text = "End Date:";
+            // 
+            // lblStart
+            // 
+            this.lblStart.AutoSize = true;
+            this.lblStart.Location = new System.Drawing.Point(107, 158);
+            this.lblStart.Name = "lblStart";
+            this.lblStart.Size = new System.Drawing.Size(94, 24);
+            this.lblStart.TabIndex = 6;
+            this.lblStart.Text = "Start Date:";
+            // 
+            // dgReport
+            // 
+            this.dgReport.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgReport.GridColor = System.Drawing.SystemColors.Control;
+            this.dgReport.Location = new System.Drawing.Point(10, 331);
+            this.dgReport.Name = "dgReport";
+            this.dgReport.Size = new System.Drawing.Size(558, 373);
+            this.dgReport.TabIndex = 5;
+            // 
+            // dtEndDate
+            // 
+            this.dtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtEndDate.Location = new System.Drawing.Point(219, 193);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Size = new System.Drawing.Size(200, 26);
+            this.dtEndDate.TabIndex = 4;
+            // 
+            // dtStartDate
+            // 
+            this.dtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStartDate.Location = new System.Drawing.Point(219, 158);
+            this.dtStartDate.Name = "dtStartDate";
+            this.dtStartDate.Size = new System.Drawing.Size(200, 26);
+            this.dtStartDate.TabIndex = 3;
             // 
             // lblReports
             // 
@@ -467,66 +532,6 @@ namespace RMaD
             this.btnShipmentMenu.UseVisualStyleBackColor = false;
             this.btnShipmentMenu.Click += new System.EventHandler(this.btnShipmentMenu_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(219, 158);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 3;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(219, 193);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker2.TabIndex = 4;
-            // 
-            // lblStart
-            // 
-            this.lblStart.AutoSize = true;
-            this.lblStart.Location = new System.Drawing.Point(107, 158);
-            this.lblStart.Name = "lblStart";
-            this.lblStart.Size = new System.Drawing.Size(94, 24);
-            this.lblStart.TabIndex = 6;
-            this.lblStart.Text = "Start Date:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 364);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(557, 325);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // lblEndDate
-            // 
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(107, 198);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(93, 24);
-            this.lblEndDate.TabIndex = 7;
-            this.lblEndDate.Text = "End Date:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(211, 269);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(153, 35);
-            this.btnSearch.TabIndex = 8;
-            this.btnSearch.Text = "Generate Data";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // lblEplanation
-            // 
-            this.lblEplanation.AutoSize = true;
-            this.lblEplanation.Location = new System.Drawing.Point(150, 100);
-            this.lblEplanation.Name = "lblEplanation";
-            this.lblEplanation.Size = new System.Drawing.Size(269, 24);
-            this.lblEplanation.TabIndex = 9;
-            this.lblEplanation.Text = "Get Shipments Between Dates:";
-            // 
             // UxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,11 +543,11 @@ namespace RMaD
             this.Controls.Add(this.btnReportsMenu);
             this.Controls.Add(this.btnGroupMenu);
             this.Controls.Add(this.btnShipmentMenu);
+            this.Controls.Add(this.pnlReports);
+            this.Controls.Add(this.pnlGroups);
             this.Controls.Add(this.pnlShipments);
             this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlUser);
-            this.Controls.Add(this.pnlReports);
-            this.Controls.Add(this.pnlGroups);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UxForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -552,12 +557,12 @@ namespace RMaD
             this.pnlGroups.ResumeLayout(false);
             this.pnlReports.ResumeLayout(false);
             this.pnlReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgReport)).EndInit();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).EndInit();
             this.pnlSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -599,9 +604,9 @@ namespace RMaD
         private System.Windows.Forms.Button btnCancelEdit;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblStart;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dgReport;
+        private System.Windows.Forms.DateTimePicker dtEndDate;
+        private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.Label lblEplanation;
         private System.Windows.Forms.Button btnSearch;
     }

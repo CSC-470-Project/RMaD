@@ -13,6 +13,17 @@ namespace RMaD.Classes
         private static SQLiteDataReader result;
         private static SQLiteCommand sqlCommand;
         static string sqlQuery;
+        private string carrier;
+
+        public ShippingService()
+        {
+            
+        }
+
+        public ShippingService(string carrier) 
+        {
+            this.carrier = carrier;
+        }
 
         public List<string> loadShippingServList()
         {
@@ -42,12 +53,12 @@ namespace RMaD.Classes
             return shippingServList;
         }
         //Get carried ID from database
-        public int getCarrierID(string carrierName)
+        public int getCarrierID()
         {
             DatabaseAccess databaseObject = new DatabaseAccess();
             sqlQuery = "select shipping_company_id from SHIPPING_COMPANY where shipping_company_name = @carrier";
             sqlCommand = new SQLiteCommand(sqlQuery, databaseObject.sqlConnection);
-            sqlCommand.Parameters.AddWithValue("@carrier", carrierName);
+            sqlCommand.Parameters.AddWithValue("@carrier", this.carrier);
             databaseObject.OpenConnection();
 
             result = sqlCommand.ExecuteReader();
@@ -74,6 +85,5 @@ namespace RMaD.Classes
 
             return carrierID;
         }
-
     }
 }
