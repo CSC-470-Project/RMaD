@@ -25,7 +25,7 @@ We hope you enjoy using the RMaD and never lose track of your packages again!
 
 
 ## Installation
-Check out our [Wiki](https://github.com/scriptkittie/RMaD/wiki/Installation) for instructions, as well as other information such as code documentation, settings description, and more!
+Check out our [Wiki](https://github.com/CSC-470-Project/RMaD/wiki/Installationn) for instructions, as well as other information such as code documentation, settings description, and more!
 
 ## Issues/Forks
 Please report any issues to the issues section and as always if you have any functionality requests go ahead and open an issue containing your suggestions.
